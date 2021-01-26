@@ -9,9 +9,10 @@ curl "${API}${URL_PATH}/${ID}" \
   --header "Content-Type: application/json" \
 --header "Authorization: Bearer ${TOKEN}" \
 --data '{
-    "example": {
-      "text": "'"${TEXT}"'"
-    }
-  }'
+    "opening": {
+      "name": "'"${NAME}"'",
+      "type": "'"${TYPE}"'",
+      "skill": "'"${SKILL}"'",
+    }'
 
 echo
