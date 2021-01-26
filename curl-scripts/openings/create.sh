@@ -1,7 +1,7 @@
 #!/bin/bash
 
-API="http://localhost:4741"
-URL_PATH="/examples"
+API="https://aqueous-shelf-72255.herokuapp.com"
+URL_PATH="/openings"
 
 curl "${API}${URL_PATH}" \
   --include \
@@ -9,9 +9,10 @@ curl "${API}${URL_PATH}" \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
-    "example": {
-      "text": "'"${TEXT}"'",
-      "title": "'"${TITLE}"'"
+    "opening": {
+      "name": "'"${NAME}"'",
+      "type": "'"${TYPE}"'",
+      "skill": "'"${SKILL}"'",
     }
   }'
 
