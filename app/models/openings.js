@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+const postSchema = require('./posts.js')
+
 const openingSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -13,6 +15,7 @@ const openingSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  // posts: [postSchema],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

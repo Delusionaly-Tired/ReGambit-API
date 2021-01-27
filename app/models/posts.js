@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+const commentSchema = require('./comments.js')
+
 const postSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -9,7 +11,7 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  comments: { commentSchema },
+  comments: {commentSchema},
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
