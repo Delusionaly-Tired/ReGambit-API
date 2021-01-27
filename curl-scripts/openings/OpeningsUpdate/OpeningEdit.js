@@ -81,7 +81,7 @@ class openingsUpdate extends Component {
     // if the openings is deleted
     if (updated) {
       // redirect to the openingss index page
-      return <Redirect to={`/openingss/${this.props.match.params.id}`} />
+      return <Redirect to={`/openings/${this.props.match.params.id}`} />
     }
 
     return (
