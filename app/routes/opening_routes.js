@@ -16,7 +16,7 @@ const router = express.Router()
 
 // INDEX
 // GET /openings
-router.get('/openings', requireToken, (req, res, next) => {
+router.get('/openings', (req, res, next) => {
   Opening.find()
     .then(openings => {
       return openings.map(opening => opening.toObject())
@@ -27,7 +27,7 @@ router.get('/openings', requireToken, (req, res, next) => {
 
 // SHOW
 // GET /openings/5a7db6c74d55bc51bdf39793
-router.get('/openings/:id', requireToken, (req, res, next) => {
+router.get('/openings/:id', (req, res, next) => {
   Opening.findById(req.params.id)
     .then(handle404)
     .then(opening => res.status(200).json({ opening: opening.toObject() }))
