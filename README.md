@@ -3,13 +3,13 @@ ReGambit-API
 ReGambit-API is the back-end of the ReGambit Application.
 
 
-# GEO-DOODS API
+# ReGambit-API
 
 The API for the ReGambit database! This API has models for `Users`, `Openings`, `Posts`, and `Comments` and connects the relationship between `Users` and `Openings`.
 
 ### Relevant links
 
-- [Deployed Client]
+- [Deployed Client] (https://delusionaly-tired.github.io/ReGambit-client/)
 - [Deployed API](https://aqueous-shelf-72255.herokuapp.com/)
 - [GEO-DOODS Client Repository](https://github.com/Delusionaly-Tired/ReGambit-client)
 
@@ -45,11 +45,15 @@ The API for the ReGambit database! This API has models for `Users`, `Openings`, 
 Today was spent planning for the project. Initially as a team we had a stand-up in order review the project template, goals, wireframing, user stories and the ERD. This allowed use to create a culture of code, create a team relationship/responsibilities, and reviewed SCRUM/Agile framework.  Once a plan was established two teams of two, Henry/James(Team Alpha) & Julius/Conner(Team Charlie), who were assigned to begin creating the front-end and back-end. Team Alpha was able to create the front-end foundation that established a stable point for User creation. They also completed the initial styling that will give our application a unique and professional design and layout while maintaining functionality. Team Charlie focused on creating the database that the user would be calling on. This included creation of curl-scripts, authenticated/unauthenticated routes and creating the different models and schemas. To conclude the day, as a group we reviewed the final products of coding and merged them to the Master branch, first deployment completed.
 
 1/27
-
+The majority of the day was spent continuing on the previous days work. We began the morning with a morning scrum to discuss our goals/objectives for the day.
+We split into our teams and throughout the day we completed the authentication process for the user and front-end styling. Hurdles of the day were power/technical issues that were overcome with communication between the team.
 
 
 1/28
+Today we began the day with our morning meetings and decided to focus our efforts on the openings portion of our back and front ends. Today our group was able to stay on task and complete our goals while also managing a medical hurdle.
+With our proper planning before each day of work, we have been able to handle this unexpected issues seamlessly.
 
-
+1/29
+Today was spent finalizing the portions we wanted to complete for our V1 and presentation on Monday. We managed to complete everything and it was all working correctly locally. However, we ran into in issue with our deployment that is preventing our application from working.
 
 ### Unfinished
