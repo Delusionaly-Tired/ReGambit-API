@@ -9,7 +9,7 @@ The API for the ReGambit database! This API has models for `Users`, `Openings`, 
 
 ### Relevant links
 
-- [Deployed Client] (https://delusionaly-tired.github.io/ReGambit-client/)
+- [Deployed Client](https://delusionaly-tired.github.io/ReGambit-client/)
 - [Deployed API](https://aqueous-shelf-72255.herokuapp.com/)
 - [GEO-DOODS Client Repository](https://github.com/Delusionaly-Tired/ReGambit-client)
 
@@ -56,4 +56,8 @@ With our proper planning before each day of work, we have been able to handle th
 1/29
 Today was spent finalizing the portions we wanted to complete for our V1 and presentation on Monday. We managed to complete everything and it was all working correctly locally. However, we ran into in issue with our deployment that is preventing our application from working.
 
+2/1-2/5
+Debugged error preventing application from working/connecting with API. Style updates and blog post CRUD and functionality added!
+
 ### Unfinished
+-Interactive gameboard and pieces for user play.
