@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const commentSchema = require('./comments.js')
+// const commentSchema = require('./comments.js')
 
 const postSchema = new mongoose.Schema({
   title: {
@@ -11,8 +11,7 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  // comments: {commentSchema},
-  owner: {
+  poster: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true

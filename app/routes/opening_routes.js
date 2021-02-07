@@ -29,6 +29,7 @@ router.get('/openings', (req, res, next) => {
 // GET /openings/5a7db6c74d55bc51bdf39793
 router.get('/openings/:id', (req, res, next) => {
   Opening.findById(req.params.id)
+    .populate('posts.poster')
     .then(handle404)
     .then(opening => res.status(200).json({ opening: opening.toObject() }))
     .catch(next)
