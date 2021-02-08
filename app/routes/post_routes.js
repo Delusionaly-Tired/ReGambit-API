@@ -16,7 +16,8 @@ const router = express.Router()
 
 // CREATE
 // POST /posts
-router.post('/openings/:id/posts', requireToken, (req, res, next) => {
+router.post('/posts', requireToken, (req, res, next) => {
+  req.body.post.owner = req.user.id
   const postData = req.body.post
   const openingID = postData.openingID
 
@@ -37,7 +38,6 @@ router.post('/openings/:id/posts', requireToken, (req, res, next) => {
 router.patch('/openings/:id/posts/:id', requireToken, removeBlanks, (req, res, next) => {
   const postData = req.body.posts
   const openingID = postData.openingID
-  console.log(openingID);
 
   const postID = req.params.postID
 
