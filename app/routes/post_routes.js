@@ -16,19 +16,18 @@ const router = express.Router()
 
 // CREATE
 // POST /posts
-router.post('/posts', requireToken, (req, res, next) => {
+router.patch('/openings/:id', requireToken, (req, res, next) => {
   req.body.post.owner = req.user.id
   const postData = req.body.post
   const openingID = postData.openingID
 
   Opening.find(openingID)
-    .then(handle404)
     .then(opening => {
       opening.posts.push(postData)
       return opening.save()
     })
     .then(opening => {
-      res.status(201).json({ opening: opening })
+      res.status(201).json({ post: post })
     })
     .catch(next)
 })
