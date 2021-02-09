@@ -36,7 +36,6 @@ router.patch('/openings/:id/posts/:id', requireToken, removeBlanks, (req, res, n
   const openingID = postData.openingID
 
   const postID = req.params.postID
-
   Opening.findById(openingID)
     .then(handle404)
     .then(opening => {
