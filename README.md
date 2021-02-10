@@ -1,9 +1,4 @@
-ReGambit-API
-
-ReGambit-API is the back-end of the ReGambit Application.
-
-
-# ReGambit-API
+# ReGambi-API
 
 The API for the ReGambit database! This API has models for `Users`, `Openings`, `Posts`, and `Comments` and connects the relationship between `Users` and `Openings`.
 
@@ -11,7 +6,7 @@ The API for the ReGambit database! This API has models for `Users`, `Openings`, 
 
 - [Deployed Client](https://delusionaly-tired.github.io/ReGambit-client/)
 - [Deployed API](https://aqueous-shelf-72255.herokuapp.com/)
-- [GEO-DOODS Client Repository](https://github.com/Delusionaly-Tired/ReGambit-client)
+- [Client Repository](https://github.com/Delusionaly-Tired/ReGambit-client)
 
 ### List of Technologies Used
 - HTML/CSS

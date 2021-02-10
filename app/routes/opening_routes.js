@@ -29,6 +29,7 @@ router.get('/openings', (req, res, next) => {
 // GET /openings/5a7db6c74d55bc51bdf39793
 router.get('/openings/:id', (req, res, next) => {
   Opening.findById(req.params.id)
+    .populate('posts.poster')
     .then(handle404)
     .then(opening => res.status(200).json({ opening: opening.toObject() }))
     .catch(next)
@@ -49,7 +50,7 @@ router.post('/openings', requireToken, (req, res, next) => {
 // UPDATE
 // PATCH /openings/5a7db6c74d55bc51bdf39793
 router.patch('/openings/:id', requireToken, removeBlanks, (req, res, next) => {
-  delete req.body.opening.owner
+  // delete req.body.opening.owner
 
   Opening.findById(req.params.id)
     .then(handle404)
