@@ -16,37 +16,37 @@ const router = express.Router()
 
 // CREATE
 // POST /posts
-router.patch('/openings/:id', requireToken, (req, res, next) => {
-  const postData = req.body.opening.post
-  const arrMerge = req.opening.posts.concat(postData)
+router.post('/posts', requireToken, (req, res, next) => {
+  const postData = req.body.post
+  postData.owner = req.user
+  const openingID = postData.openingID
+  console.log(openingID)
 
-  Opening.find(req.params.id)
-    .then(handle404)
-    .then(opening => {
-      arrMerge
-      return opening.save(req.body.opening)
-    })
-    .then(() => res.sendStatus(204).json({ opening }))
-    .catch(next)
+  Opening.findbyId(openingID)
+  .then(handle404)
+  .then(opening => {opening.post.push(postData)
+  return opening.save()
+  })
+  .then((opening) => res.status(201).json({ opening }))
   })
 
 // // UPDATE
 // // PATCH /posts/5a7db6c74d55bc51bdf39793
-// router.patch('/openings/:id/posts/:id', requireToken, removeBlanks, (req, res, next) => {
-//   const postData = req.body.posts
-//   const openingID = postData.openingID
-//
-//   const postID = req.params.postID
-//   Opening.findById(openingID)
-//     .then(handle404)
-//     .then(opening => {
-//       const post = opening.posts.id(postID)
-//       posts.set(postData)
-//       return opening.save()
-//     })
-//     .then(() => res.sendStatus(204))
-//     .catch(next)
-// })
+router.patch('/openings/:id/posts/:id', requireToken, removeBlanks, (req, res, next) => {
+  const postData = req.body.posts
+  const openingID = postData.openingID
+
+  const postID = req.params.postID
+  Opening.findById(openingID)
+    .then(handle404)
+    .then(opening => {
+      const post = opening.posts.id(postID)
+      posts.set(postData)
+      return opening.save()
+    })
+    .then(() => res.sendStatus(204))
+    .catch(next)
+})
 
 // DESTROY
 // DELETE /posts/5a7db6c74d55bc51bdf39793
