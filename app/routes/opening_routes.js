@@ -51,7 +51,6 @@ router.post('/openings', requireToken, (req, res, next) => {
 // PATCH /openings/5a7db6c74d55bc51bdf39793
 router.patch('/openings/:id', requireToken, removeBlanks, (req, res, next) => {
   // delete req.body.opening.owner
-  const postData = req.body.opening.post
 
   Opening.findById(req.params.id)
     .then(handle404)

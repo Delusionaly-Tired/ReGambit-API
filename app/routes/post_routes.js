@@ -17,7 +17,7 @@ const router = express.Router()
 // CREATE
 // POST /posts
 router.patch('/openings/:id', requireToken, (req, res, next) => {
-  const postData = req.body.opening.post
+  const postData = req.body.post
   const arrMerge = req.opening.posts.concat(postData)
 
   Opening.find(req.params.id)
