@@ -19,9 +19,11 @@ const router = express.Router()
 router.post('/posts', requireToken, (req, res, next) => {
   const postData = req.body.post
   postData.owner = req.user._id
-  const openingID = postData.openingID
+  const openingID = postData.openingId
+  console.log(postData)
+  console.log(openingID)
 
-  Opening.findbyId(openingID)
+  Opening.findById(openingID)
   .then(handle404)
   .then(opening => {
     opening.posts.push(postData)
@@ -35,9 +37,9 @@ router.post('/posts', requireToken, (req, res, next) => {
 // // PATCH /posts/5a7db6c74d55bc51bdf39793
 router.patch('/posts/:id', requireToken, (req, res, next) => {
   const postData = req.body.post
-  const openingID = postData.openingID
+  const openingID = postData.openingId
   const postID = req.params.id
-
+  console.log(postID)
   Opening.findById(openingID)
     .then(handle404)
     .then(opening => {
@@ -53,7 +55,8 @@ router.patch('/posts/:id', requireToken, (req, res, next) => {
 // DELETE /posts/5a7db6c74d55bc51bdf39793
 router.delete('/posts/:id', requireToken, (req, res, next) => {
   const postID = req.params.id
-  const openingID = req.body.posts.openingID
+  console.log(req.body)
+  const openingID = req.body.posts.openingId
 
   Opening.findById(openingID)
     .then(handle404)

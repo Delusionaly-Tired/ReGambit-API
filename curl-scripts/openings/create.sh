@@ -13,7 +13,7 @@ curl "${API}${URL_PATH}" \
     "opening": {
       "name": "'"${NAME}"'",
       "type": "'"${TYPE}"'",
-      "skill": "'"${SKILL}"'",
+      "skill": "'"${SKILL}"'"
     }
   }'
 
