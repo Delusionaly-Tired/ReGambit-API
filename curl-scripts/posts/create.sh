@@ -11,8 +11,8 @@ curl "${API}${URL_PATH}" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
     "post": {
-      "title": "'"${title}"'",
-      "content": "'"${content}"'"
+      "title": "'"${TITLE}"'",
+      "content": "'"${CONTENT}"'"
     }
   }'
 
