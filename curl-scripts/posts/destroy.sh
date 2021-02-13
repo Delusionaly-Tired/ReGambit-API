@@ -7,9 +7,10 @@ URL_PATH="/posts"
 curl "${API}${URL_PATH}/${ID}" \
   --include \
   --request DELETE \
-  --header "Authorization: Bearer ${TOKEN}"
+  --header "Authorization: Bearer ${TOKEN}" \
+  --header "Content-Type: application/json" \
   --data '{
-    "review": {
+    "post": {
       "openingId": "'"${openingid}"'"
     }
   }'

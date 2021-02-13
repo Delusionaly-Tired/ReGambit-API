@@ -55,13 +55,12 @@ router.patch('/posts/:id', requireToken, (req, res, next) => {
 // DELETE /posts/5a7db6c74d55bc51bdf39793
 router.delete('/posts/:id', requireToken, (req, res, next) => {
   const postID = req.params.id
-  console.log(req.body)
-  const openingID = req.body.posts.openingId
+  console.log(req.body.post.openingId)
+  const openingID = req.body.post.openingId
 
   Opening.findById(openingID)
     .then(handle404)
     .then(opening => {
-      requireOwnership(req, post)
       opening.posts.id(postID).remove()
       return opening.save()
     })
