@@ -18,30 +18,31 @@ const router = express.Router()
 // POST /posts
 router.post('/posts', requireToken, (req, res, next) => {
   const postData = req.body.post
-  postData.owner = req.user
+  postData.owner = req.user._id
   const openingID = postData.openingID
-  console.log(openingID)
 
   Opening.findbyId(openingID)
   .then(handle404)
-  .then(opening => {opening.post.push(postData)
-  return opening.save()
+  .then(opening => {
+    opening.posts.push(postData)
+    return opening.save()
   })
   .then((opening) => res.status(201).json({ opening }))
-  })
+  .catch(next)
+})
 
 // // UPDATE
 // // PATCH /posts/5a7db6c74d55bc51bdf39793
-router.patch('/openings/:id/posts/:id', requireToken, removeBlanks, (req, res, next) => {
-  const postData = req.body.posts
+router.patch('/posts/:id', requireToken, (req, res, next) => {
+  const postData = req.body.post
   const openingID = postData.openingID
+  const postID = req.params.id
 
-  const postID = req.params.postID
   Opening.findById(openingID)
     .then(handle404)
     .then(opening => {
       const post = opening.posts.id(postID)
-      posts.set(postData)
+      post.set(postData)
       return opening.save()
     })
     .then(() => res.sendStatus(204))
@@ -50,14 +51,14 @@ router.patch('/openings/:id/posts/:id', requireToken, removeBlanks, (req, res, n
 
 // DESTROY
 // DELETE /posts/5a7db6c74d55bc51bdf39793
-router.delete('/openings/:id/posts/:id', requireToken, (req, res, next) => {
-  const postID = req.params.postID
+router.delete('/posts/:id', requireToken, (req, res, next) => {
+  const postID = req.params.id
   const openingID = req.body.posts.openingID
 
   Opening.findById(openingID)
     .then(handle404)
     .then(opening => {
-      // requireOwnership(req, post)
+      requireOwnership(req, post)
       opening.posts.id(postID).remove()
       return opening.save()
     })
