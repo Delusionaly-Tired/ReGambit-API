@@ -1,6 +1,7 @@
 #!/bin/bash
 
-API="https://aqueous-shelf-72255.herokuapp.com"
+API="http://localhost:4741"
+#API="https://aqueous-shelf-72255.herokuapp.com"
 URL_PATH="/change-password"
 
 curl "${API}${URL_PATH}/" \
