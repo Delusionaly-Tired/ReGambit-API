@@ -15,10 +15,6 @@ const openingSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  blogPost: {
-    type: String,
-    required: true
-  },
   posts: [postSchema],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
