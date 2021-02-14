@@ -18,10 +18,13 @@ const router = express.Router()
 // POST /posts
 router.post('/posts', requireToken, (req, res, next) => {
   const postData = req.body.post
-  postData.owner = req.user._id
+  postData.owner.id = req.user.id
   const openingID = postData.openingId
+
   console.log(postData)
   console.log(openingID)
+
+  console.log(req)
 
   Opening.findById(openingID)
   .then(handle404)
