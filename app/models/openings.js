@@ -16,8 +16,7 @@ const openingSchema = new mongoose.Schema({
     required: true
   },
   blogPost: {
-    type: String,
-    required: true
+    type: String
   },
   posts: [postSchema],
   owner: {
