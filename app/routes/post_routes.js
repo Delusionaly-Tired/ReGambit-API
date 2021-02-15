@@ -40,7 +40,7 @@ router.post('/posts', requireToken, (req, res, next) => {
 router.patch('/posts/:postId', requireToken, (req, res, next) => {
   const postData = req.body.post
   const openingID = postData.openingId
-  const postId = req.params.postid
+  const postId = req.params.postId
 
   console.log(postID)
 
