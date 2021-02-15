@@ -23,7 +23,7 @@ router.post('/posts', requireToken, (req, res, next) => {
 
   console.log(postData)
   console.log(openingID)
-  console.log(req)
+  console.log(req.body)
 
   Opening.findById(openingID)
   .then(handle404)
@@ -37,36 +37,38 @@ router.post('/posts', requireToken, (req, res, next) => {
 
 // // UPDATE
 // // PATCH /posts/5a7db6c74d55bc51bdf39793
-router.patch('/posts/:id', requireToken, (req, res, next) => {
+router.patch('/posts/:postId', requireToken, (req, res, next) => {
   const postData = req.body.post
   const openingID = postData.openingId
-  const postID = req.params.id
+  const postId = req.params.postid
+
   console.log(postID)
+
   Opening.findById(openingID)
     .then(handle404)
     .then(opening => {
-      const post = opening.posts.id(postID)
+      const post = opening.posts.id(postId)
       post.set(postData)
       return opening.save()
     })
-    .then(() => res.sendStatus(204))
+    .then(() => res.sendStatus(201))
     .catch(next)
 })
 
 // DESTROY
 // DELETE /posts/5a7db6c74d55bc51bdf39793
-router.delete('/posts/:id', requireToken, (req, res, next) => {
-  const postID = req.params.id
-  console.log(req.body.post.openingId)
+router.delete('/posts/:postId', requireToken, (req, res, next) => {
+  const postId = req.params.postid
   const openingID = req.body.post.openingId
 
   Opening.findById(openingID)
     .then(handle404)
     .then(opening => {
-      opening.posts.id(postID).remove()
+      const post = opening.posts.id(postId)
+      post.remove()
       return opening.save()
     })
-    .then(() => res.sendStatus(204))
+    .then(post => res.sendStatus(201).json({ post: post }))
     .catch(next)
 })
 
