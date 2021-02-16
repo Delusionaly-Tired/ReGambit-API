@@ -2,6 +2,7 @@ const express = require('express')
 const passport = require('passport')
 
 const Opening = require('../models/openings.js')
+// const Posts = require('../models/posts.js')
 
 const customErrors = require('../../lib/custom_errors')
 
@@ -28,11 +29,18 @@ router.get('/openings', (req, res, next) => {
 // SHOW
 // GET /openings/5a7db6c74d55bc51bdf39793
 router.get('/openings/:id', (req, res, next) => {
-  Opening.findById(req.params.id)
-    .populate('posts.poster')
+  const openingID = req.params.id
+
+  Opening.findById(openingID)
+    // .populate('posts.owner')
     .then(handle404)
-    .then(opening => res.status(200).json({ opening: opening.toObject() }))
+    .then(opening => {
+      res.status(200).json({ opening: opening })
+      console.log('This is the opening on 39', opening.posts[2])
+      return opening.posts.map(post => post.toObject())
+  })
     .catch(next)
+    console.log('THIS IS SPARTA')
 })
 
 // CREATE
