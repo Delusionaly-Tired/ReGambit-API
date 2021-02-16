@@ -54,5 +54,10 @@ Today was spent finalizing the portions we wanted to complete for our V1 and pre
 2/1-2/5
 Debugged error preventing application from working/connecting with API. Style updates and blog post CRUD and functionality added!
 
+2/7-2/15
+Creating and debugging our Post curl-scripts/CRUD functionality for our application. Our group as a whole struggled with this. With the help of GA teachers and our cohort we were able to get it working. We are proud of what we
+were able to accomplish here, but we all have our goals set on improving our skill set and continuing to improve the application for real world use.
+
 ### Unfinished
--Interactive gameboard and pieces for user play.
+- Interactive gameboard and pieces for user play.
+- Update/Delete functionality for our Posts. 
