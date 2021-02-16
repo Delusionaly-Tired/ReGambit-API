@@ -37,12 +37,12 @@ router.post('/posts', requireToken, (req, res, next) => {
 
 // // UPDATE
 // // PATCH /posts/5a7db6c74d55bc51bdf39793
-router.patch('/posts/:postId', requireToken, (req, res, next) => {
+router.patch('/posts/:id', requireToken, (req, res, next) => {
   const postData = req.body.post
   const openingID = postData.openingId
   const postId = req.params.postId
 
-  console.log(postID)
+  console.log(postId)
 
   Opening.findById(openingID)
     .then(handle404)
@@ -57,9 +57,11 @@ router.patch('/posts/:postId', requireToken, (req, res, next) => {
 
 // DESTROY
 // DELETE /posts/5a7db6c74d55bc51bdf39793
-router.delete('/posts/:postId', requireToken, (req, res, next) => {
-  const postId = req.params.postid
-  const openingID = req.body.post.openingId
+router.delete('/posts/:id', requireToken, (req, res, next) => {
+  const postId = req.params.postId
+  console.log('This is request params', req.params)
+  console.log(req.body)
+  const openingID = req.params._id
 
   Opening.findById(openingID)
     .then(handle404)
