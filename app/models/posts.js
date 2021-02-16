@@ -11,10 +11,9 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  poster: {
+  owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+    ref: 'User'
   }
 }, {
   timestamps: true

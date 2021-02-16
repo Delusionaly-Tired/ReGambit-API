@@ -16,51 +16,61 @@ const router = express.Router()
 
 // CREATE
 // POST /posts
-router.patch('/openings/:id', requireToken, (req, res, next) => {
-  const postData = req.body.opening.post
+router.post('/posts', requireToken, (req, res, next) => {
+  const postData = req.body.post
+  postData.owner = req.user._id
+  const openingID = postData.openingId
 
-  Opening.find(req.params.id)
-    .then(handle404)
-    .then(opening => {
-      opening.posts.push(postData)
-      return opening.save()
-    })
-    .then(() => res.status(201))
-    .catch(next)
+  console.log(postData)
+  console.log(openingID)
+  console.log(req.body)
+
+  Opening.findById(openingID)
+  .then(handle404)
+  .then(opening => {
+    opening.posts.push(postData)
+    return opening.save()
   })
+  .then((opening) => res.status(201).json({ opening }))
+  .catch(next)
+})
 
-// UPDATE
-// PATCH /posts/5a7db6c74d55bc51bdf39793
-router.patch('/openings/:id/posts/:id', requireToken, removeBlanks, (req, res, next) => {
-  const postData = req.body.posts
-  const openingID = postData.openingID
+// // UPDATE
+// // PATCH /posts/5a7db6c74d55bc51bdf39793
+router.patch('/posts/:id', requireToken, (req, res, next) => {
+  const postData = req.body.post
+  const openingID = postData.openingId
+  const postId = req.params.postId
 
-  const postID = req.params.postID
+  console.log(postId)
+
   Opening.findById(openingID)
     .then(handle404)
     .then(opening => {
-      const post = opening.posts.id(postID)
-      posts.set(postData)
+      const post = opening.posts.id(postId)
+      post.set(postData)
       return opening.save()
     })
-    .then(() => res.sendStatus(204))
+    .then(() => res.sendStatus(201))
     .catch(next)
 })
 
 // DESTROY
 // DELETE /posts/5a7db6c74d55bc51bdf39793
-router.delete('/openings/:id/posts/:id', requireToken, (req, res, next) => {
-  const postID = req.params.postID
-  const openingID = req.body.posts.openingID
+router.delete('/posts/:id', requireToken, (req, res, next) => {
+  const postId = req.params.postId
+  console.log('This is request params', req.params)
+  console.log(req.body)
+  const openingID = req.params._id
 
   Opening.findById(openingID)
     .then(handle404)
     .then(opening => {
-      // requireOwnership(req, post)
-      opening.posts.id(postID).remove()
+      const post = opening.posts.id(postId)
+      post.remove()
       return opening.save()
     })
-    .then(() => res.sendStatus(204))
+    .then(post => res.sendStatus(201).json({ post: post }))
     .catch(next)
 })
 

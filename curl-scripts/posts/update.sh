@@ -2,18 +2,18 @@
 
 API="http://localhost:4741"
 #API="https://aqueous-shelf-72255.herokuapp.com"
-URL_PATH="/openings"
+URL_PATH="/posts"
 
-curl "${API}${URL_PATH}" \
+curl "${API}${URL_PATH}/${ID}" \
   --include \
-  --request POST \
+  --request PATCH \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
-    "opening": {
-      "name": "'"${NAME}"'",
-      "type": "'"${TYPE}"'",
-      "skill": "'"${SKILL}"'"
+    "post": {
+      "title": "'"${title}"'",
+      "content": "'"${content}"'",
+      "openingId": "'"${openingid}"'"
     }
   }'
 

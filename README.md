@@ -15,6 +15,32 @@ The API for the ReGambit database! This API has models for `Users`, `Openings`, 
 - React
 - React Router
 
+### Routes
+
+# Authentication
+| Route | Method | Path |
+| ----------- | ----------- | ----------- |
+| Sign-up | POST | /sign-up 
+| Sign-In | POST  | /sign-in
+| Change-Password |  PATCH | /change-password
+| Sign-Out | DELETE | /sign-out
+
+# Opening Routes
+| Route | Method | Path |
+| ----------- | ----------- | ----------- |
+| Index | GET | /openings 
+| Show | GET  | /openings/:id
+| Create |  POST | /openings
+| Update | PATCH | /openings/:id
+| Delete | DELETE | /openings/:id
+
+# Post Routes
+| Route | Method | Path |
+| ----------- | ----------- | ----------- |
+| Create |  PATCH | /openings/:id
+| Update | PATCH | /openings/:id/posts/:id
+| Delete | DELETE | /openings/:id/posts/:id
+
 ### User Stories
 
 - As an unregistered user, I would like to sign up with email and password.
@@ -31,7 +57,7 @@ The API for the ReGambit database! This API has models for `Users`, `Openings`, 
 
 ### ERD
 
-![ReGambit API ERD](https://imgur.com/h8pqd7k)
+![ERD](https://imgur.com/a/kAVbNaX)
 
 ### Planning
 
