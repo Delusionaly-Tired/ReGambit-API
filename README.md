@@ -20,7 +20,7 @@ The API for the ReGambit database! This API has models for `Users`, `Openings`, 
 # Authentication
 | Route | Method | Path |
 | ----------- | ----------- | ----------- |
-| Sign-up | POST | /sign-up 
+| Sign-up | POST | /sign-up
 | Sign-In | POST  | /sign-in
 | Change-Password |  PATCH | /change-password
 | Sign-Out | DELETE | /sign-out
@@ -28,7 +28,7 @@ The API for the ReGambit database! This API has models for `Users`, `Openings`, 
 # Opening Routes
 | Route | Method | Path |
 | ----------- | ----------- | ----------- |
-| Index | GET | /openings 
+| Index | GET | /openings
 | Show | GET  | /openings/:id
 | Create |  POST | /openings
 | Update | PATCH | /openings/:id
@@ -37,9 +37,9 @@ The API for the ReGambit database! This API has models for `Users`, `Openings`, 
 # Post Routes
 | Route | Method | Path |
 | ----------- | ----------- | ----------- |
-| Create |  PATCH | /openings/:id
-| Update | PATCH | /openings/:id/posts/:id
-| Delete | DELETE | /openings/:id/posts/:id
+| Create |  PATCH | /posts
+| Update | PATCH | /posts/:id
+| Delete | DELETE | /posts/:id
 
 ### User Stories
 
@@ -84,6 +84,9 @@ Debugged error preventing application from working/connecting with API. Style up
 Creating and debugging our Post curl-scripts/CRUD functionality for our application. Our group as a whole struggled with this. With the help of GA teachers and our cohort we were able to get it working. We are proud of what we
 were able to accomplish here, but we all have our goals set on improving our skill set and continuing to improve the application for real world use.
 
+2/17-2/20
+Destruction and the ability to update posts where fixed here. After moving to the v2 branch in the front end and pushing the master API changes here. There is A LOT more work to do with the chessboard logic and passing the information about.
+
 ### Unfinished
 - Interactive gameboard and pieces for user play.
-- Update/Delete functionality for our Posts. 
+- Possible chessboard routes for the API calls rather than keeping it all on the front end.
