@@ -40,9 +40,9 @@ router.post('/posts', requireToken, (req, res, next) => {
 router.patch('/posts/:id', requireToken, (req, res, next) => {
   const postData = req.body.post
   const openingID = postData.openingId
-  const postId = req.params.postId
+  const postId = req.params.id
 
-  console.log(postId)
+  console.log('This is the Post Data following:', postData)
 
   Opening.findById(openingID)
     .then(handle404)
@@ -51,22 +51,22 @@ router.patch('/posts/:id', requireToken, (req, res, next) => {
       post.set(postData)
       return opening.save()
     })
-    .then(() => res.sendStatus(201))
+    .then((opening) => res.status(204).json({ opening }))
     .catch(next)
 })
 
 // DESTROY
 // DELETE /posts/5a7db6c74d55bc51bdf39793
 router.delete('/posts/:id', requireToken, (req, res, next) => {
-  const postId = req.params.postId
+  const postId = req.params.id
   console.log('This is request params', req.params)
   console.log(req.body)
-  const openingID = req.params._id
+  const openingID = req.body.opening._id
 
   Opening.findById(openingID)
     .then(handle404)
     .then(opening => {
-      const post = opening.posts.id(postId)
+      const post = opening.posts.find(post => post._id == postId )
       post.remove()
       return opening.save()
     })

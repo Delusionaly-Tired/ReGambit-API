@@ -66,10 +66,6 @@ router.patch('/openings/:id', requireToken, removeBlanks, (req, res, next) => {
       requireOwnership(req, opening)
       return opening.updateOne(req.body.opening)
     })
-    // .then(opening => {
-    //   opening.post.push(postData)
-    //   return opening.save(req.body.opening)
-    //   })
     .then(() => res.sendStatus(201))
     .catch(next)
 })
