@@ -19,6 +19,9 @@ const openingSchema = new mongoose.Schema({
     type: String
   },
   posts: [postSchema],
+  pgn: {
+    type: String
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
